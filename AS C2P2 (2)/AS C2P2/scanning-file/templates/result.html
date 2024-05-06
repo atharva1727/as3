@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+            text-align: center;
+            margin: 50px;
+        }
+        
+        .logo {
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto; /* Center the container horizontally */
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #message {
+            color: red;
+        }
+        
+        .green {
+            color: green;
+        }
+        
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7Skb14Q0-f8LoZG2zcD5rbmr8m0SQw0S4w&s"> <!-- Replace "your-image-url.jpg" with the URL of your image -->
+        </div>
+        <h1>Scan Result</h1>
+        {% if details.positives == 0 %}
+            <p>No threats detected. <br>
+                Your file is uploded sucessfully.</p>
+        {% else %}
+            <h2>Threat Detected! File not uploded</h2>
+            <p>Scan Date: {{ details.scan_date }}</p>
+            <p>Detection Ratio: {{ details.positives }}/{{ details.total }}</p>
+            <ul>
+                {% for engine, result in details.scans.items() %}
+                    <li>{{ engine }}: {% if result.detected %}<span class="red">{{ result.result }}</span>{% else %}<span class="green">{{ result.result }}</span>{% endif %}</li>
+                {% endfor %}
+            </ul>
+            <p>Please proceed with caution and take appropriate action to mitigate the threat.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

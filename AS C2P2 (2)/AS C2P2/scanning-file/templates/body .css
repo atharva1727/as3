@@ -1,0 +1,31 @@
+body {
+            margin: 0;
+            padding: 0;
+            background-image: url("img6.jpg"); /* Replace 'background-image.jpg' with the URL of your background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the container */
+        }
+
+        .logo img {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px; /* Adjust the maximum width of the logo as needed */
+            height: auto;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }

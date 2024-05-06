@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwakarma University Student ID Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+    </style>
+    <title>Landing Page</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7Skb14Q0-f8LoZG2zcD5rbmr8m0SQw0S4w&s" alt="Logo">
+    </div>
+
+    <div id="file-upload-container" class="container">
+        <h2>File Upload</h2>
+        <form id="upload-form" action="/submit" method="post" enctype="multipart/form-data">
+            <label for="file-input">File (PDF, max 5MB):</label>
+            <input type="file" id="file-input" name="file" accept=".pdf" required>
+            <br>
+            <!-- Add input fields for name, email, password, and confirm password -->
+            <label for="name-input">Name:</label>
+            <input type="text" id="name-input" name="name" required>
+            <br>
+            <label for="email-input">Email:</label>
+            <input type="email" id="email-input" name="email" required>
+            <br>
+            <label for="password-input">Password:</label>
+            <input type="password" id="password-input" name="password" required>
+            <br>
+            <label for="confirm-password-input">Confirm Password:</label>
+            <input type="password" id="confirm-password-input" name="confirm_password" required>
+            <br>
+            <p>Submit the file before: <span id="submission-date"></span></p>
+            <span id="message"><?php echo $message ?? ''; ?></span>
+            <br>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        // Calculate submission date
+        var submissionDate = new Date();
+        submissionDate.setDate(submissionDate.getDate() + 7); // Set submission date to one week from today
+
+        // Update HTML to display submission date
+        document.getElementById('submission-date').textContent = submissionDate.toDateString();
+    </script>
+</body>
+</html>
